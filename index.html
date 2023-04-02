@@ -1,20 +1,63 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script>
-    function myFunction() {
-        $.get("https://8a3a-18-139-124-147.ap.ngrok.io/api/v1/users/33417/", function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-      });
-    }
-  </script>
+<meta charset="UTF-8">
+<title>CORS - HTML5Rocks and NY Times</title>
+<style>
+	#ResponseContent {
+		width:66%;
+		padding:1% 2%;
+		background-color:#ccc;
+		margin-top:20px;
+	}
+	h2 {
+		margin:0;
+		padding:0;
+	}
+</style>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#btnhtml5rocks').click(function() {
+			$('#ResponseContent h2').html('Response Content');
+			$('#ResponseContent div').html('');
+			$.ajax({
+				type: 'GET',
+				url: 'https://www.html5rocks.com/en/tutorials/file/xhr2/',
+				success: function(response) {
+					var article = $(response).find('article').first().html();
+					$('#ResponseContent h2').html('Response Content - from HTML5Rocks');
+					$('#ResponseContent div').html(article);
+				}
+			}).fail(function() {
+				alert("failed!");
+			});;
+		});
+		$('#btnnytimes').click(function() {
+			$('#ResponseContent h2').html('Response Content');
+			$('#ResponseContent div').html('');
+			$.ajax({
+				type: 'GET',
+				url: 'http://www.nytimes.com/',
+				success: function(response) {
+					var article = $(response).find('article').first().html();
+					$('#ResponseContent h2').html('Response Content - from NY Times');
+					$('#ResponseContent div').html(article);
+				}
+			}).fail(function() {
+				alert("failed!");
+			});
+		});
+	});
+</script>
 </head>
 <body>
-<h2>Demo JavaScript in Head</h2>
-
-<p id="demo">A Paragraph</p>
-<button type="button" onclick="myFunction()">Try it</button>
-
+	<button id="btnhtml5rocks">Fetch HTML5 Rocks</button>
+	<button id="btnnytimes">Fetch NY Times</button>
+	<br>
+	<div id="ResponseContent">
+		<h2>Response Content</h2>
+		<div></div>
+	</div>
 </body>
 </html>
