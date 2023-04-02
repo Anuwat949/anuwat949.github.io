@@ -9,35 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script>
-    function main() 
-    {
-        console.log("nicks-cors-test");
-        .ajax({
-            url: "https://8a3a-18-139-124-147.ap.ngrok.io/api/v1/users/33417/",
-            type: 'GET',
-            dataType: 'json', // added data type
-            success: function(res) {
-                console.log(res);
-                alert(res);
-            }
-        });
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "Paragraph changed.";
     }
-    </script>
     <title>My Website [Name of the website]</title>
 
   </head>
 
-  <body onLoad='main();'>
+  <body>
 
-    <main>
+   <h2>Demo JavaScript in Head</h2>
 
-        <h1>Welcome to My Website [Name of the website]</h1>  
-
-        <p>This is my new website hosted on GitHub Pages!</p>
-
-    </main>
+    <p id="demo">A Paragraph</p>
+    <button type="button" onclick="myFunction()">Try it</button>
 
   </body>
 
