@@ -10,12 +10,26 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js">
-
+    <script type='text/javascript' src="main.js">
+    function main() 
+    {
+        console.log("nicks-cors-test");
+        .ajax({
+            url: "https://8a3a-18-139-124-147.ap.ngrok.io/api/v1/users/33417/",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(res) {
+                console.log(res);
+                alert(res);
+            }
+        });
+    }
+    </script>
     <title>My Website [Name of the website]</title>
 
   </head>
 
-  <body>
+  <body onLoad='main();'>
 
     <main>
 
